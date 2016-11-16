@@ -19,6 +19,7 @@
 		2BDFE9FD1DDCC2A500B87696 /* PhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFE9FC1DDCC2A500B87696 /* PhotoManager.m */; };
 		2BDFEA031DDCC4A400B87696 /* PhotoObjectGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFEA021DDCC4A400B87696 /* PhotoObjectGroup.m */; };
 		2BDFEA061DDD111200B87696 /* CollectionReusableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFEA051DDD111200B87696 /* CollectionReusableView.m */; };
+		2BDFEA091DDD180C00B87696 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BDFEA081DDD180C00B87696 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,8 @@
 		2BDFEA021DDCC4A400B87696 /* PhotoObjectGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoObjectGroup.m; sourceTree = "<group>"; };
 		2BDFEA041DDD111200B87696 /* CollectionReusableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CollectionReusableView.h; sourceTree = "<group>"; };
 		2BDFEA051DDD111200B87696 /* CollectionReusableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CollectionReusableView.m; sourceTree = "<group>"; };
+		2BDFEA071DDD180C00B87696 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		2BDFEA081DDD180C00B87696 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 				2BDFE9C61DDCBC2500B87696 /* AppDelegate.m */,
 				2BDFE9F51DDCBF3500B87696 /* CollectionViewController.h */,
 				2BDFE9F61DDCBF3500B87696 /* CollectionViewController.m */,
+				2BDFEA071DDD180C00B87696 /* DetailViewController.h */,
+				2BDFEA081DDD180C00B87696 /* DetailViewController.m */,
 				2BDFE9F81DDCBF9500B87696 /* CollectionViewCell.h */,
 				2BDFE9F91DDCBF9500B87696 /* CollectionViewCell.m */,
 				2BDFEA041DDD111200B87696 /* CollectionReusableView.h */,
@@ -296,6 +301,7 @@
 				2BDFE9F71DDCBF3500B87696 /* CollectionViewController.m in Sources */,
 				2BDFE9C71DDCBC2500B87696 /* AppDelegate.m in Sources */,
 				2BDFEA031DDCC4A400B87696 /* PhotoObjectGroup.m in Sources */,
+				2BDFEA091DDD180C00B87696 /* DetailViewController.m in Sources */,
 				2BDFE9FD1DDCC2A500B87696 /* PhotoManager.m in Sources */,
 				2BDFE9FA1DDCBF9500B87696 /* CollectionViewCell.m in Sources */,
 				2BDFE9C41DDCBC2500B87696 /* main.m in Sources */,

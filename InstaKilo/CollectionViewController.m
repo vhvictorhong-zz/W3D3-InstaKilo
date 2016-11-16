@@ -10,6 +10,7 @@
 #import "PhotoManager.h"
 #import "CollectionViewCell.h"
 #import "CollectionReusableView.h"
+#import "DetailViewController.h"
 
 @interface CollectionViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
@@ -39,15 +40,22 @@ static NSString * const reuseIdentifier = @"Cell";
     
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"DetailViewController"]) {
+        DetailViewController *dvc = segue.destinationViewController;
+        UICollectionViewCell *cell = (UICollectionViewCell *)sender;
+        NSIndexPath *indexPath = [self.collectionView indexPathForCell:cell];
+        PhotoObjectGroup *photoObjectGroup = self.imageArray[indexPath.section][1][indexPath.row];
+        dvc.imageName = photoObjectGroup.name;
+    
+    }
 }
-*/
+
 
 #pragma mark <UICollectionViewDataSource>
 
@@ -69,8 +77,8 @@ static NSString * const reuseIdentifier = @"Cell";
     
     // Configure the cell
     
-    PhotoObjectGroup *myImage = self.imageArray[indexPath.section][1][indexPath.row];
-    cell.imageView.image = [UIImage imageNamed: myImage.name];
+    PhotoObjectGroup *photoObjectGroup = self.imageArray[indexPath.section][1][indexPath.row];
+    cell.imageView.image = [UIImage imageNamed: photoObjectGroup.name];
     
     return cell;
     
