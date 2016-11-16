@@ -54,9 +54,24 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="O5t-7b-Pbb">
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="O5t-7b-Pbb" customClass="CollectionReusableView">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVp-4R-gXr">
+                                            <rect key="frame" x="166" y="15" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="kVp-4R-gXr" firstAttribute="centerX" secondItem="O5t-7b-Pbb" secondAttribute="centerX" id="2By-90-xX8"/>
+                                        <constraint firstItem="kVp-4R-gXr" firstAttribute="centerY" secondItem="O5t-7b-Pbb" secondAttribute="centerY" id="MKl-Iq-jsG"/>
+                                    </constraints>
+                                    <connections>
+                                        <outlet property="headerLabel" destination="kVp-4R-gXr" id="oY1-oR-3Wg"/>
+                                    </connections>
                                 </collectionReusableView>
                             </collectionView>
                         </subviews>
@@ -68,7 +83,20 @@
                             <constraint firstAttribute="trailing" secondItem="hjg-GD-igt" secondAttribute="trailing" id="og2-at-k4c"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="G6p-an-6L9"/>
+                    <navigationItem key="navigationItem" id="G6p-an-6L9">
+                        <nil key="title"/>
+                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="2FL-PN-E0z">
+                            <rect key="frame" x="113" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segments>
+                                <segment title="Subject"/>
+                                <segment title="Location"/>
+                            </segments>
+                            <connections>
+                                <action selector="segmentedControlChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="LpN-tm-Wdp"/>
+                            </connections>
+                        </segmentedControl>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="hjg-GD-igt" id="MrH-q7-2c5"/>
                     </connections>

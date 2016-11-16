@@ -9,13 +9,14 @@
 #import "CollectionViewController.h"
 #import "PhotoManager.h"
 #import "CollectionViewCell.h"
+#import "CollectionReusableView.h"
 
 @interface CollectionViewController ()<UICollectionViewDelegate, UICollectionViewDataSource>
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property PhotoManager *photoManger;
-@property NSArray *imageArray;
+@property NSMutableArray *imageArray;
 
 @end
 
@@ -29,8 +30,7 @@ static NSString * const reuseIdentifier = @"Cell";
     self.collectionView.dataSource = self;
     
     self.photoManger = [PhotoManager new];
-    
-    self.imageArray = @[@"Chicagosign", @"Cloudgate", @"Edgewalk", @"Hollywoodsign", @"Miamiseaquarium", @"Miamisign", @"RedBridge", @"Sanfranciscosign", @"Torontosign", @"Universalstudio"];
+    self.imageArray = [self.photoManger getArrayBySubject];
     
     UICollectionViewFlowLayout *layout = (UICollectionViewFlowLayout*)self.collectionView.collectionViewLayout;
     CGFloat width = self.view.bounds.size.width/2;
@@ -53,15 +53,14 @@ static NSString * const reuseIdentifier = @"Cell";
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     
-    return 1;
+    return self.imageArray.count;
     
 }
 
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
 
-    return self.photoManger.photoObjectArray.count;
-    //return self.imageArray.count;
+    return [self.imageArray[section][1] count];
     
 }
 
@@ -69,12 +68,27 @@ static NSString * const reuseIdentifier = @"Cell";
     CollectionViewCell *cell = [self.collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     
     // Configure the cell
-    cell.imageView.image = [UIImage imageNamed:self.photoManger.photoObjectArray[indexPath.row].name];
-    //cell.photoObject = [self.photoManger photoItemAtIndexPath:indexPath];
+    
+    PhotoObjectGroup *myImage = self.imageArray[indexPath.section][1][indexPath.row];
+    cell.imageView.image = [UIImage imageNamed: myImage.name];
     
     return cell;
+    
 }
 
+-(UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
+    
+    UICollectionReusableView *reusableView = nil;
+    
+    if (kind == UICollectionElementKindSectionHeader) {
+        CollectionReusableView *headerView = [self.collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"cell" forIndexPath:indexPath];
+        headerView.headerLabel.text = self.imageArray[indexPath.section][0];
+        reusableView = headerView;
+    }
+    
+    return reusableView;
+    
+}
 #pragma mark <UICollectionViewDelegate>
 
 /*
@@ -105,5 +119,34 @@ static NSString * const reuseIdentifier = @"Cell";
 	
 }
 */
+
+#pragma mark Collection VC action
+
+- (IBAction)segmentedControlChanged:(UISegmentedControl *)sender {
+    
+    switch (sender.selectedSegmentIndex) {
+        case 0:
+            
+            [self.imageArray removeAllObjects];
+            self.imageArray = [self.photoManger getArrayBySubject];
+            
+            [self.collectionView reloadData];
+            
+            break;
+            
+        case 1:
+            
+            [self.imageArray removeAllObjects];
+            self.imageArray = [self.photoManger getArrayByLocation];
+            
+            [self.collectionView reloadData];
+            
+            break;
+            
+        default:
+            break;
+    }
+    
+}
 
 @end

@@ -10,6 +10,9 @@
 
 @interface PhotoObjectGroup : NSObject
 
+@property NSDictionary *locationGroup;
+@property NSDictionary *subjectGroup;
+
 @property (nonatomic, readonly) NSString *name;
 @property NSString *location;
 @property NSString *subject;

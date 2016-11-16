@@ -13,4 +13,7 @@
 
 @property (nonatomic, readonly) NSArray <PhotoObjectGroup *>* photoObjectArray;
 
+-(NSMutableArray *)getArrayBySubject;
+-(NSMutableArray *)getArrayByLocation;
+
 @end

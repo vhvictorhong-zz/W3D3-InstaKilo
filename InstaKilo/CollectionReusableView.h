@@ -1,5 +1,5 @@
 //
-//  CollectionViewController.h
+//  CollectionReusableView.h
 //  InstaKilo
 //
 //  Created by Victor Hong on 16/11/2016.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CollectionViewController : UIViewController
-
+@interface CollectionReusableView : UICollectionReusableView
+@property (weak, nonatomic) IBOutlet UILabel *headerLabel;
 
 @end

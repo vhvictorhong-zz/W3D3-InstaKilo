@@ -30,6 +30,42 @@
     return self;
 }
 
+-(NSMutableArray *)getArrayBySubject {
+    
+    NSMutableArray *arrayBySubject = [[NSMutableArray alloc] init];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    for (PhotoObjectGroup *image in self.photoObjectArray) {
+        if (dict[image.subject]) {
+            [dict[image.subject] addObject:image];
+        } else {
+            dict[image.subject] = [NSMutableArray arrayWithArray:@[image]];
+        }
+    }
+    
+    for (NSString *subject in dict) {
+        [arrayBySubject addObject:@[subject, dict[subject]]];
+    }
+    return arrayBySubject;
+}
+
+-(NSMutableArray *)getArrayByLocation {
+    NSMutableArray *arrayByLocation = [[NSMutableArray alloc] init];
+    NSMutableDictionary *dict = [[NSMutableDictionary alloc] init];
+    
+    for (PhotoObjectGroup *image in self.photoObjectArray) {
+        if (dict[image.location]) {
+            [dict[image.location] addObject:image];
+        } else {
+            [dict setValue:[NSMutableArray arrayWithObject:image] forKey:image.location];
+        }
+    }
+    
+    for (NSString *subject in dict) {
+        [arrayByLocation addObject:@[subject, dict[subject]]];
+    }
+    
+    return arrayByLocation;
+}
 
 
 @end

@@ -17,40 +17,12 @@
         _name = name;
         _location = location;
         _subject = subject;
+        _locationGroup = [NSMutableDictionary dictionary];
+        _subjectGroup = [NSMutableDictionary dictionary];
         
     }
     
     return self;
 }
-
--(void)createLocationGroup {
-    
-    
-}
-
-
-//- (void)createPhotos {
-//    if ([self.name isEqualToString:@"Taylor Swift"]) {
-//        [self createPhotosWithName:@"swift"];
-//    }
-//    if ([self.name isEqualToString:@"Iggy Pop"]) {
-//        [self createPhotosWithName:@"iggy"];
-//    }
-//    if ([self.name isEqualToString:@"Lady Gaga"]) {
-//        [self createPhotosWithName:@"lady"];
-//    }
-//}
-//
-//- (void)createPhotosWithName:(NSString *)name {
-//    
-//    NSMutableArray <PhotoObject *> *temp = [NSMutableArray array];
-//    for (NSInteger i = 1; i < 7; ++i) {
-//        NSString *imgName = [NSString stringWithFormat:@"%@%ld%ld.jpg", name, (long)0, (long)i];
-//        [temp addObject:[[PhotoObject alloc] initWithName:imgName]];
-//    }
-//    _photoObjectGroup = [temp copy];
-//    
-//}
-
 
 @end
