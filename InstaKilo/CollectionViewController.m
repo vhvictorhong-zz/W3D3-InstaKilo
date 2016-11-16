@@ -38,8 +38,13 @@ static NSString * const reuseIdentifier = @"Cell";
     CGSize size = CGSizeMake(width, width);
     layout.itemSize = size;
     
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(deleteCell:)];
+    tapGesture.numberOfTapsRequired = 2;
+    tapGesture.numberOfTouchesRequired = 1;
+    
+    [self.collectionView addGestureRecognizer:tapGesture];
+    
 }
-
 
 #pragma mark - Navigation
 
@@ -154,6 +159,22 @@ static NSString * const reuseIdentifier = @"Cell";
         default:
             break;
     }
+    
+}
+
+-(void)deleteCell:(UITapGestureRecognizer *)sender {
+    
+    CGPoint tapPoint = [sender locationInView:self.collectionView];
+    
+    NSIndexPath *indexPath = [self.collectionView indexPathForItemAtPoint:tapPoint];
+    
+    if (indexPath) {
+        
+        [self.imageArray[indexPath.section][1] removeObjectAtIndex:indexPath.row];
+        
+    }
+    
+    [self.collectionView reloadData];
     
 }
 

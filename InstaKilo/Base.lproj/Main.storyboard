@@ -51,7 +51,6 @@
                                         </constraints>
                                         <connections>
                                             <outlet property="imageView" destination="tUv-dp-qeD" id="FLL-ld-8WF"/>
-                                            <segue destination="cyU-25-0wp" kind="show" identifier="DetailViewController" id="5I6-0N-agL"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
